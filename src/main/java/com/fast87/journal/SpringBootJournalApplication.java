@@ -1,22 +1,131 @@
 package com.fast87.journal;
 
-import com.fast87.journal.domain.Journal;
-import com.fast87.journal.repository.JournalRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.ApplicationArguments;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 
-import java.util.List;
-
 @SpringBootApplication
 public class SpringBootJournalApplication {
+    private static final Logger log = LoggerFactory.getLogger(SpringBootJournalApplication.class);
 
+    public static void main(String[] args) {
+        SpringApplication.run(SpringBootJournalApplication.class);
+    }
+    @Value("${myapp.server-ip}")
+    String serverIp;
+
+    @Autowired
+    MyAppProperties props;
+
+    @Bean
+    CommandLineRunner values(){
+        return args -> {
+            log.info(">>> 서버 IP : " + serverIp);
+            log.info(">>> 앱이름 : " + props.getName());
+            log.info(">>> 앱 정보 : " + props.getDescription());
+
+        };
+    }
+
+    @Component
+    @ConfigurationProperties(prefix = "myapp")
+    public static class MyAppProperties{
+        private String name;
+        private String description;
+        private String serverIp;
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        public String getDescription() {
+            return description;
+        }
+
+        public void setDescription(String description) {
+            this.description = description;
+        }
+
+        public String getServerIp() {
+            return serverIp;
+        }
+
+        public void setServerIp(String serverIp) {
+            this.serverIp = serverIp;
+        }
+    }
+
+    /*
+    //클래스버전 2
+    private static final Logger log = LoggerFactory.getLogger(SpringBootJournalApplication.class);
+
+    public static void main(String[] args) {
+        SpringApplication.run(SpringBootJournalApplication.class);
+    }
+
+    @Bean
+    String info(){
+        return "그냥 간단한 문자열 반환";
+    }
+
+    @Autowired
+    String info;
+
+    @Bean
+    CommandLineRunner myMethod(){
+        return args -> {
+            log.info("## >> CommandLineRunner 구현체...");
+            log.info("## >> info 빈에 엑세스. " + info);
+            for (String arg:args)
+                log.info(arg);
+        };
+    }*/
+
+    /*//클래스 버전 11
+public class SpringBootJournalApplication implements CommandLineRunner, ApplicationRunner {
+
+    private static final Logger log = LoggerFactory.getLogger(SpringBootJournalApplication.class);
+
+    public static void main(String[] args) {
+        SpringApplication.run(SpringBootJournalApplication.class);
+    }
+
+    @Bean
+    String info(){
+        return "그냥 간단한 문자열 반환";
+    }
+
+    @Autowired
+    String info;
+
+    @Override
+    public void run(ApplicationArguments args) throws Exception {
+        log.info("## >> ApplicationRunner 구현체..");
+        log.info("## >> info 빈에 엑세스. " + info);
+        args.getNonOptionArgs().forEach(file -> log.info(file));
+    }
+
+    @Override
+    public void run(String... args) throws Exception {
+        log.info("## >> CommandLineRunner 구현체...");
+        log.info("## >> info 빈에 엑세스. " + info);
+        for (String arg:args)
+            log.info(arg);
+    }*/
+
+    /*
+    // 클래스 버전 10
 	@Bean
 	InitializingBean saveData(JournalRepository repo){
 		return ()->{
@@ -53,5 +162,7 @@ public class SpringBootJournalApplication {
 			}
 		}
 
-	}
+	}*/
+
+
 }
