@@ -2,10 +2,17 @@ package com.fast87.journal;
 
 import com.fast87.journal.domain.Journal;
 import com.fast87.journal.repository.JournalRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.InitializingBean;
-import org.springframework.boot.SpringApplication;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.context.annotation.Bean;
+import org.springframework.stereotype.Component;
+
+import java.util.List;
 
 @SpringBootApplication
 public class SpringBootJournalApplication {
@@ -22,6 +29,29 @@ public class SpringBootJournalApplication {
 	}
 
 	public static void main(String[] args) {
-		SpringApplication.run(SpringBootJournalApplication.class, args);
+		Logger logger = LoggerFactory.getLogger(SpringBootJournalApplication.class);
+		new SpringApplicationBuilder()
+				.listeners(event -> logger.info("### >> " + event.getClass().getCanonicalName()))
+				.sources(SpringBootJournalApplication.class)
+				.run(args);
+	}
+
+	@Component
+	class MyComponent{
+		private final Logger logger2 = LoggerFactory.getLogger(SpringBootJournalApplication.class);
+
+		@Autowired
+		public MyComponent(ApplicationArguments args) {
+			boolean enable = args.containsOption("enable");
+			if (enable)
+				logger2.info("## >> enable 옵션을 주셨네요.");
+
+			List<String> _args = args.getNonOptionArgs();
+			logger2.info("## >> 다른인자들..");
+			if (!_args.isEmpty()){
+				_args.forEach(file -> logger2.info(file));
+			}
+		}
+
 	}
 }
