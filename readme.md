@@ -91,4 +91,29 @@
      - @Component @ConfigurationProPerties(prefix="myapp")
         * @ConfigurationProperties는 이 클래스가 application.properties파일에 정의된 모든 프로퍼티 앞에 접두어 myapp을 붙였다고 스프링 부트에 알리는 애너테이션 입니다. 그래서 myapp.serverIp, myapp.name, myapp.description프로퍼티를 올바르게 인식합니다.
         * @Component는 스프링 빈 클래스입을 표시하는 애너테이션입니다.
-        
+
+### 4장 스프링 부트 CLI 
+
+- IDE 없이 프로젝트 생성 및 실행 하는 스프링부트 도구
+- 스프링 부트 CLI 설치(mac)
+    -  `$brew tap pivotal/tap`
+    -  `$brew install springboot` 
+    
+1. 스프링부트 CLI
+    - 실행 : `$spring run ......`
+    - 테스트 : `$spring test ......`
+    - 의존체 설정 : `$spring grap ......`
+    - jar 생성 : `$spring jar ......`
+    - war 생성 : `$spring war ......`
+    - grap과 비슷, 메이븐 코디네이트 표시: `$spring install ......`
+    - 의존체 삭제 : `$spring uninstall ......`
+    - 프로젝트 생성 : `$spring init ......`
+        * 데모 프로젝트 생성 : `$spring init`
+        * 데모 프로젝트 실행 : `$./mvnw spring-boot:run`
+        * 그레이들 웹 프로젝트 생성 : `$spring init -d=web,jdbc --build=gradle`
+        * -x 옵션으로 바로 압축 해제
+    - Shell 명령어
+        * `$spring shell`
+    - help 명령어
+        * `$spring help``
+     
