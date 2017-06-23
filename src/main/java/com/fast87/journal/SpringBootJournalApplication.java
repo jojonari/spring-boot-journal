@@ -2,14 +2,8 @@ package com.fast87.journal;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.context.annotation.Bean;
-import org.springframework.stereotype.Component;
 
 @SpringBootApplication
 public class SpringBootJournalApplication {
@@ -18,7 +12,7 @@ public class SpringBootJournalApplication {
     public static void main(String[] args) {
         SpringApplication.run(SpringBootJournalApplication.class);
     }
-    @Value("${myapp.server-ip}")
+    /*@Value("${myapp.server-ip}")
     String serverIp;
 
     @Autowired
@@ -65,7 +59,7 @@ public class SpringBootJournalApplication {
             this.serverIp = serverIp;
         }
     }
-
+*/
     /*
     //클래스버전 2
     private static final Logger log = LoggerFactory.getLogger(SpringBootJournalApplication.class);

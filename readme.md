@@ -115,5 +115,31 @@
     - Shell 명령어
         * `$spring shell`
     - help 명령어
-        * `$spring help``
-     
+        * `$spring help`
+    
+### 5장 스르핑과 스프링 부트
+
+1. 스프링
+    - web.xml 파일의 <servlet>태그에서 서블릿명을 선언하고 <sevlet-mapping>태그에서 요청끝점에 해당하는 url로 서블릿을 맵핑합니다
+    - 메이븐 빌드 : `$mvn clean package`
+    - 톰캣설치 : `$brew install tomcat`
+2. 스프링 부트
+    - 애너테이션을 쓰면 xml구성의 군더더기를 들어낼수 있다
+    - < context:component-scan>태그는 스프링으로 하여금 base-package 레벨에서 애너테이션으로 표시한 클래스를 찾는다
+    - 모든 스프링 기술은 @Enable<기술명> 애너테이션만 있으면 간단히 불러 쓸수 있다.
+    
+### 6장 스프링부트 테스트
+
+- 인터페이스를 분명하게 설계하고 객체지향적으로 SOLID원칙에 따라 클래스를 작성하는 일은 중요하며 스프링은 이러한 설계원리를 개발자가 더 잘 따르도록 안내하고 필요한 테스트도구를 제공한다
+- 단위/통합 테스트 전용 스타터 폼 spring-boot-starter-test만 있으면 된다
+- spring-boot-starter-test는 스프링 이니셜라이저로 프로젝트를 생성할 때마다 항상 곁들여지는 스타터 폼으로 spring-test, junit, hamcrest, objnesis, mockito JAR 파일도 함께 가져온다
+- @RunWith(SpringJUnit4ClassRunner.class)
+    * 제이유닛 라이브러리의 @RunWith는 제이유닛 내장 실행기 대신 SpringJUnit4ClassRunner.class 클래스를 참조하여 테스트를 실행합니다.
+- Springboot 1.4
+    * SpringRunner
+        + SpringJUnit4classRunner를 상속한 클래스로, 사실상 클래스 이름만 짧게 줄인 동일한 클래스다
+    * @SpringBootTest
+        + 일반적인 스프링 부트 기반의 테스트 클래스에 붙이는 새 애너테이션입니다 속성을 추가해서 애플리케이션에 따라 설정을 달리할 수 있습니다
+- 웹테스트
+    * @WebAppConfiguration
+        + org.springframework.web.context.WebApplicationContext 구현체를 불러오는 클래스 레벨 에너테이션으로, 웹 애플리케이션과 관련된 파일이나 빈은 모두 접근할 수 있습니다
