@@ -9,6 +9,7 @@ import java.util.Date;
  */
 //@Entity
 public class Journal {
+    private long id;
     private String title;
     private Date created;
     private String summary;
@@ -68,7 +69,13 @@ public class Journal {
         return value.toString();
     }
 
-    /*@Id
+    public Journal(long id, String title,  String summary, Date created) {
+        this.id = id;
+        this.title = title;
+        this.created = created;
+        this.summary = summary;
+    }
+/*@Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String title;

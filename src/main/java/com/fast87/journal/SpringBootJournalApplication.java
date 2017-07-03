@@ -1,17 +1,33 @@
 package com.fast87.journal;
 
+import com.fast87.journal.service.JournalService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class SpringBootJournalApplication {
+public class SpringBootJournalApplication implements CommandLineRunner {
     private static final Logger log = LoggerFactory.getLogger(SpringBootJournalApplication.class);
+    @Autowired
+    JournalService service;
 
     public static void main(String[] args) {
         SpringApplication.run(SpringBootJournalApplication.class);
     }
+
+    @Override
+    public void run(String... strings) throws Exception {
+        log.info("@@데이터 생성...");
+        service.insertData();
+        log.info("@@findAll 호출...");
+        service.findAll().forEach(entery -> log.info(entery.toString()));
+
+    }
+
+
     /*@Value("${myapp.server-ip}")
     String serverIp;
 

@@ -117,7 +117,7 @@
     - help 명령어
         * `$spring help`
     
-### 5장 스르핑과 스프링 부트
+### 5장 스프링과 스프링 부트
 
 1. 스프링
     - web.xml 파일의 <servlet>태그에서 서블릿명을 선언하고 <sevlet-mapping>태그에서 요청끝점에 해당하는 url로 서블릿을 맵핑합니다
@@ -143,3 +143,16 @@
 - 웹테스트
     * @WebAppConfiguration
         + org.springframework.web.context.WebApplicationContext 구현체를 불러오는 클래스 레벨 에너테이션으로, 웹 애플리케이션과 관련된 파일이나 빈은 모두 접근할 수 있습니다
+
+### 7장 스프링부트 데이터 액세스
+
+- 스프링 프레임워크에서 접속할 DB정보 및 접속하는 방법 크레덴셜은 몇몇 인터페이스와 클래스에서 가져옵니다 트랜잭션 관리를 하려면 DataSource는 필수인데 이 객체를 생성하려면 DB 접속에 필요한 Driver 클래스, JDBC URL, 사용자이름 비밀번호가 필요하다.
+- JdbcTemplate : DB 작업을 주관하는 JdbcTemplate클래스를 자동으로 연결합니다 JdbcTemplate은 템플릿 디자인패턴에 기반한 클래스로 개발자는 데이터에만 집중하고 다른 모든 DB작업은(생성, 삭제 등)은 템플릿에게 맡길 수 있게 한다.
+- CommendLineRunner 인터페이스를 구현한 클래스의 run(){}은 스프링 부트 시동이 끝나면 실행 된다.
+- H2콘솔
+    * spring-boot-starter-web의존체가 필요하다
+    * application.properties :  `spring.h2.console.enabled=true`
+    * http://localhost:8080/h2-console/
+    * JDBCURL : jdbc:h2:mem:testdb
+    * USERNAME : sa
+    
