@@ -155,4 +155,19 @@
     * http://localhost:8080/h2-console/
     * JDBCURL : jdbc:h2:mem:testdb
     * USERNAME : sa
-    
+- JPA
+    * 가벼운 퍼시스턴스 객체를 이용하는 방식
+    * spring-boot-starter-jpa의존체 추가
+    * @Entity : DB테이블 및 필드와 연결
+    * @ID, @GeneratedValue : PK 명시
+    * JpaRepository라는 상위 인터페이스를 확장
+    * JpaRepository는 spring-boot-data-jpa 소속 인터페이스이고, DB에서 실행 가능한 액션 메서드를 모두 구비합니다.
+    * @Entity 애너테이션을 부인 클래스와 java.io.Serializable객체인 ID를 밭습니다.
+    * 검색
+        + 프로퍼티 명명 규칙에 따라 JpaRepository를 확장한 클래스에서 '쿼리' 메서드를 만들면 된다.
+        + title검색 : `public List<Journal> findByTitleContaining(String word);`
+        + `select * from journal where title like '%word%'` 쿼리로 변환/실행
+    * @Query : JPQL구문을 받는 애너테이션
+        + 직접적인 쿼리 사용가능
+        
+        
