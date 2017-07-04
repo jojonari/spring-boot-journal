@@ -170,4 +170,19 @@
     * @Query : JPQL구문을 받는 애너테이션
         + 직접적인 쿼리 사용가능
         
+### 8장 스프링 부트 웹개발
+
+- 스프링 프레임워크는 웹기술을 spring-web, spring-webmvc, spring-websocket, spring-webmvc-portlet 모듈로 지원합니다 .
+    * spring-web : 멀티파트 파일 업로드, 스프링 컨테이너 초기화, 웹 애플리케이션 컨텍스트 등 웹이 갖춰야할 공통 요소 제공
+    * spring-mvc(웹서버 모듈) : 스프링 MVC 및 웹 애플리케이션용 REST 서비스 구현체를 지니고 있음
+    * 위 두 모듈에는 아주 강력한 JSP 태그 라이브러리, 커스텀 바인딩 및 검증, 유연한 모델 전송, 커스텀 핸들러와 뷰 졸버 등 다채로운 기능 포함.
+    * 스프링 MVC의 핵심은 org.springframework.web.servlet.DispatcherServlet 서블릿 클래스다.
+        + dispatcherServlet만 있으면 뷰 리졸버, 로케일 리졸버, 테마 리졸버, 예외 핸들러 등의 리졸빙 전략을 바로 적용할 수 있음.
+        + DispatcherServlet은 일단 HTTP요청을 받아 올바른 핸들러(@Controller를 붙인 @RequestMapping으로 Url을 매핑한 메서드)로 넘기고 올바른 뷰(JSP)가 화면에 표시되도록 감독함.
+- 스프링 부트 웹 애플리케이션
+    * @JsonIgnore라는 애너테이션을 붙이면 이클래스를 JSON 문자열로 나타낼 때 대상에서 제외 하라는 의미.
+    * REST형 API분리
+        + `spring.data.rest.basePath=/api`
+        + http://localhost:8080/api로 분리
         
+    
