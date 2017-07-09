@@ -25,9 +25,9 @@ public class JournalController{
         return modelAndView;
     }
 
-    @RequestMapping(value = "/login")
-    public ModelAndView login(ModelAndView modelAndView){
-        modelAndView.setViewName(VIEW_LOGIN);
-        return modelAndView;
-    }
+//    @RequestMapping(value = "/login")
+//    public ModelAndView login(ModelAndView modelAndView){
+//        modelAndView.setViewName(VIEW_LOGIN);
+//        return modelAndView;
+//    }
 }

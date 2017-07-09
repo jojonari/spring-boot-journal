@@ -1,6 +1,6 @@
 -- USERS IN JOURNAL
 INSERT INTO account(account_name , password) VALUES('springboot', 'isawesome');
-INSERT INTO account(account_name , password) VALUES('springsecurity', 'isawesometoo');
+INSERT INTO account(account_name , password) VALUES('test', 'testpw');
 
 -- JOURNAL DATA
 INSERT INTO ENTRY(title,summary,created) VALUES('스프링 부트 입문','오늘부터 스프링 부트를 배웠다','2016-01-02 00:00:00.00');

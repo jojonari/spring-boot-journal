@@ -185,4 +185,19 @@
         + `spring.data.rest.basePath=/api`
         + http://localhost:8080/api로 분리
         
-    
+### 9장 스프링 부트 보안
+
+- 스프링 시큐리티
+    * 스프링 시큐리티는 AuthenticationProvider를 중심으로 특화된 UserDetailsService를 제공한다.
+    * pom.xml에 `spring-boot-start-security` 추가후 사용가능
+    * HTTP URL 규격상 브라우저에서 http://testid:testpw@localhost:8080으로 접속하면 기본 긴증창에 사용자 이름, 비밀번호를 입력할 필요 없이 한번에 인증된다.
+    * 스프링 시큐리티 계정 적용 방법은 application.properties에 선언, 인메모리, DB 등을 이용할 수 있다.
+    * /src/main/resources/schema.sql, src/main/resources/data.sql에 DDL과 DML을 미리 넣어놓으면 부트앱 기동시 쿼리가 실행된다.
+    * `@Configuration` : 컨텍스트 구성 클래스임을 스프링에 알림
+    * `permitAll()` 인증여부와 무관하게 누구나 접속가능한 끝점.
+- 스프링 OAuth2
+    * Oayth2는 크레덴셜(클라이언트ID와 비밀키)에 기반한 액세스 토큰을 발급하는 식으로 서비스 권한을 부여합니다.
+    * ![](http://d3grn7b5c5cnw5.cloudfront.net/sites/docs/files/oauth-abstract.png)
+        + 리소스 오너는 어떤 앱이 자신의 계정에 접근하는 행위를 특정 스코프(읽기 또는 쓰기)로 제한 합니다.
+        + 인증 서버는 사용자 신원을 검증한 뒤 앱 클라이언트에 인증리소스를 보호 합니다.
+        + 관련 예제 및 화면 구성 참고 : https://spring.io/guides/tutorials/spring-boot-oauth2/

@@ -5,8 +5,8 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 
-@Configuration
-@EnableGlobalMethodSecurity
+//@Configuration
+//@EnableGlobalMethodSecurity
 public class InMemorySecurityConfiguration {
 
     @Autowired
