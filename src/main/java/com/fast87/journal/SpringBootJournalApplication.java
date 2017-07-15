@@ -1,17 +1,56 @@
 package com.fast87.journal;
 
-import com.fast87.journal.service.JournalService;
+import com.fast87.journal.redis.Producer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
-public class SpringBootJournalApplication implements CommandLineRunner {
+public class SpringBootJournalApplication {
+
     private static final Logger log = LoggerFactory.getLogger(SpringBootJournalApplication.class);
+
+    public static void main(String[] args) {
+        SpringApplication.run(SpringBootJournalApplication.class, args);
+    }
+
+    @Value("${topic}")
+    String topic;
+
+    @Bean
+    CommandLineRunner sendMessage(Producer producer){
+        return args -> {
+            producer.sendTo(topic, "스프링 부트 레디스 메시징 시작");
+        };
+    }
+
+   /* public static void main(String[] args) {
+        SpringApplication.run(SpringBootJournalApplication.class, args);
+    }
+
+    @Value("${myqueue}")
+    String queue;
+
+    @Bean
+    Queue queue(){
+        return new Queue(queue, false);
+    }
+
     @Autowired
+    Producer producer;
+
+    @Scheduled(fixedDelay = 500L)
+    public void sendMessages(){
+        producer.sendTo(queue, "안녕하세요 !" + new Date());
+    }
+*/
+
+
+    /*    @Autowired
     JournalService service;
 
     public static void main(String[] args) {
@@ -25,7 +64,7 @@ public class SpringBootJournalApplication implements CommandLineRunner {
         log.info("@@findAll 호출...");
         service.findAll().forEach(entery -> log.info(entery.toString()));
 
-    }
+    }*/
 
 
     /*@Value("${myapp.server-ip}")
