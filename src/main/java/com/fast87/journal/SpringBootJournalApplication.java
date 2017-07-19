@@ -8,7 +8,10 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
+@RestController
 @SpringBootApplication
 public class SpringBootJournalApplication {
 
@@ -18,7 +21,11 @@ public class SpringBootJournalApplication {
         SpringApplication.run(SpringBootJournalApplication.class, args);
     }
 
-    @Value("${topic}")
+    @RequestMapping("/")
+    public String index(){
+        return "스프링 부트 액추에이터";
+    }
+   /* @Value("${topic}")
     String topic;
 
     @Bean
@@ -27,7 +34,7 @@ public class SpringBootJournalApplication {
             producer.sendTo(topic, "스프링 부트 레디스 메시징 시작");
         };
     }
-
+*/
    /* public static void main(String[] args) {
         SpringApplication.run(SpringBootJournalApplication.class, args);
     }

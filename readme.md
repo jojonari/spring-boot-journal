@@ -232,3 +232,23 @@
     * 레디스의 주임무는 리스트, 해시, 문자열, 세트, 정렬된 세트 등의 다양한 자료 구조를 보관하는 일입니다.
     * 스프링 부트 레디스 : http://projects.spring.io/spring-data-redis/
     
+### 11장 스프링 부트 액추에이터
+ 
+- 스프링 부트 액추에이터 모듈은 바로 써먹을 수 있는 감시, 지표, 감사 기능을 제공합니다.
+    * /actuator :  전체 끝점을 한 눈에 바라볼 수있는 페이지를 hateoas형식으로 보여주는 모듈
+    * /autoconfig : 자동 구성 관련정보를 postiveMatches와 nagativeMatches 두 부분으로 나누어 표시
+    * /beans : 앱에서 사용 중인 모든 스프링 빈을 나타냄
+    * /configprops : @ConfigurationProperties 빈으로 정의한 구성 프로퍼티를 모두 나열
+    * /docs : 액추에이터 모듈 관련 문서를 HTML 형식으로 나타냄
+    * /dump : 애플리케이션 스레드 덤프를 떠서 실행 중인 모든 스레드를 보여주고 JVM 스택 트레이스를 제공
+    * /env : 스프링 ConfigurableEnvironment 인터페이스의 전체 프로퍼티를 표시
+    * /flyway : DB 마이그레이션 정보를 제공
+    * /health : 애플리케이션의 건강 상태를 검진
+    * /info : application.properties 파일에 기재한 공개 앱 정보를 표시
+    * /liquibase : 앱에 적용된 리퀴베이스 DB 마이그레이션 정보를 모두 표시
+    * /logfile : logging.file 프로퍼티에 지정한 파일에 기록된 로그를 표시
+    * /metrics : 실행중인 앱의 각종 지표를 표시
+    * /mappings : @RequestMapping으로 선언한 경로의 전체 목록을 나열
+    * /shutdown : 앱을 종료시킴
+    * /trace : 트레이스 정보를 나타냄, 최근 전송한 Http요청을 몇 개 보여줌
+    

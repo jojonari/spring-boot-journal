@@ -14,20 +14,20 @@ import org.springframework.data.redis.listener.adapter.MessageListenerAdapter;
  */
 @Configuration
 public class RedisConfig {
-    @Value("${topic}")
-    String topic;
-
-    @Bean
-    RedisMessageListenerContainer container(RedisConnectionFactory connectionFactory, MessageListenerAdapter listenerAdapter){
-        RedisMessageListenerContainer container = new RedisMessageListenerContainer();
-        container.setConnectionFactory(connectionFactory);
-        container.addMessageListener(listenerAdapter, new PatternTopic(topic));
-        return container;
-    }
-
-    @Bean
-    MessageListenerAdapter listenerAdapter(Consumer consumer){
-        return new MessageListenerAdapter(consumer, "messageHandler");
-    }
+//    @Value("${topic}")
+//    String topic;
+//
+//    @Bean
+//    RedisMessageListenerContainer container(RedisConnectionFactory connectionFactory, MessageListenerAdapter listenerAdapter){
+//        RedisMessageListenerContainer container = new RedisMessageListenerContainer();
+//        container.setConnectionFactory(connectionFactory);
+//        container.addMessageListener(listenerAdapter, new PatternTopic(topic));
+//        return container;
+//    }
+//
+//    @Bean
+//    MessageListenerAdapter listenerAdapter(Consumer consumer){
+//        return new MessageListenerAdapter(consumer, "messageHandler");
+//    }
 
 }

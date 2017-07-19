@@ -18,12 +18,12 @@ public class JournalController{
     @Autowired
     JournalRepository repo;
 
-    @RequestMapping(value = "/", method = RequestMethod.GET)
+    /*@RequestMapping(value = "/", method = RequestMethod.GET)
     public ModelAndView index(ModelAndView modelAndView){
         modelAndView.setViewName(VIEW_INDEX);
         modelAndView.addObject("journal", repo.findAll());
         return modelAndView;
-    }
+    }*/
 
 //    @RequestMapping(value = "/login")
 //    public ModelAndView login(ModelAndView modelAndView){
